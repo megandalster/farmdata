@@ -57,22 +57,19 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)) {
    echo "</td><td>";
    echo $row['unit'];
    echo "</td><td>";
-   if ($row['default_unit'] == $row['unit']) {
-      echo $row['conversion']."</td>";
-      echo "<td>No</td><td>No";
-   } else {
+ // make always editable  
       echo "<form method=\"POST\" class='pure-form' action=\"viewUnits.php?&crop=".encodeURIComponent($row['crop']).
         "&edit=1&unit=".encodeURIComponent($row['unit'])."&rowNum=".$rowNum.
         "&tab=admin:admin_delete:deletecrop:deleteunit\">";
       echo '<input onkeypress= "stopSubmitOnEnter(event);" name="conv'.$rowNum.'" id="conv'.$rowNum.
          '" value="'.$row['conversion'].'" class="wide" size="6" type="text" >';
       echo "</td><td>";
-      echo "<input type=\"submit\" class=\"submitbutton pure-button wide\" value=\"Update\"></form> </td><td>";
+      echo "<input type=\"submit\" class=\"editbutton pure-button wide\" value=\"Update\"></form></td><td>";
       echo "<form method=\"POST\" action=\"viewUnits.php?&crop=".encodeURIComponent($row['crop']).
         "&delete=1&unit=".encodeURIComponent($row['unit']).
         "&tab=admin:admin_delete:deletecrop:deleteunit\">";
       echo '<input type="submit" class="deletebutton pure-button wide" value="Delete" ></form>';
-   }
+
    echo "</td></tr>";
    echo "\n";
 }
