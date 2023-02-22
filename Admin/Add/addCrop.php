@@ -108,6 +108,14 @@ if (isset($_POST['done'])) {
          phpAlert('', $p);
          die();
       }
+      $sql1="Alter table plant order by crop asc";
+      try {
+          $stmt = $dbcon->prepare($sql1);
+          $stmt->execute();
+      } catch (PDOException $p) {
+          phpAlert('', $p);
+          die();
+      }
       $sql2="Insert into units(crop,default_unit,unit,conversion) values ('".$name."','".
          $default_unit."','".$default_unit."','1')";
       try {

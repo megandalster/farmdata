@@ -13,7 +13,7 @@ if (!isset($calc_SEEDS) || $calc_SEEDS == "") {
   $calc_SEEDS = 1000;
 }
 
-if ($cover) {
+if ($isCover) {
   $sql = "select variety from coverVariety where crop='".$crop."'";
 } else {
   $sql = "select variety from variety where crop='".$crop."'";
