@@ -1,4 +1,4 @@
-<?php session_start();?>
+/*<?php session_start();?>
 <?php 
 include $_SERVER['DOCUMENT_ROOT'].'/farmdata/authentication.php';
 include $_SERVER['DOCUMENT_ROOT'].'/farmdata/design.php';
@@ -111,13 +111,14 @@ echo "<table class='pure-table pure-table-bordered'>";
    else {
       echo "<th>Beds</th>";
    }
-   
+/*   
 if ($_SESSION['gens']) {
    echo "<th>Succ&nbsp;#</th>";
 }
 if ($_SESSION['labor']) {
    echo "<th>Hours</th>";
 }
+*/
 echo "<th> Annual </th>";
 echo "<th> Last Harvest Date </th>";
 echo "<th>Comments</th>";

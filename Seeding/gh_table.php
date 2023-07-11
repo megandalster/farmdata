@@ -65,7 +65,7 @@ echo "<thead><tr align=left><th>Date of Seeding</th><th>Crop</th>";
 if ($_SESSION['gens']) {
    echo "<th>Succ&nbsp;#</th>";
 }
-echo "<th>Flats</th>";
+//echo "<th>Flats</th>";
 echo "<th> Varieties</th>";
 echo "<th> Comments</th>";
 if ($_SESSION['admin']) {

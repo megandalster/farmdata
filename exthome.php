@@ -12,6 +12,8 @@ if ($_SESSION['mobile']) {
 }
 if ($_SESSION['db'] == "tenmilefarmdb")
     echo "<h1> Welcome to FARMDATA <br>at Tenmile Farm</h1>";
+else if ($_SESSION['db'] == "farmdatademodb")
+    echo "<h1> Welcome to FARMDATA <br>at Demo Farm</h1>";
 else
     echo "<h1> Welcome to FARMDATA <br>at Spiral Path Farm</h1>";
 ?>
