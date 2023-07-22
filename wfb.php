@@ -2,11 +2,14 @@
 session_start();
 ob_start();
 include_once $_SERVER['DOCUMENT_ROOT'].'/farmdata/connection.php';
-// include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/authAdmin.php';
+include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/authAdmin.php';
+include $_SERVER['DOCUMENT_ROOT'].'/farmdata/design.php';
+include $_SERVER['DOCUMENT_ROOT'].'/farmdata/stopSubmit.php';
+
 $user = $_SESSION['dbuser'];
-if ($user == "guest" || $user == "") {
-   die("Files access not authorized.");
-}
+// if ($user == "guest" || $user == "") {
+   die("Backup file access not authorized.");
+//}
 ?>
 <link type="text/css" href="/tableDesign.css" rel = "stylesheet">
 <style>

@@ -126,7 +126,7 @@ echo "<input class='textbox mobile-input ' type='text' id='initials' name='initi
       $result = $dbcon->query("Select fieldID from field_GH where active=1  order by sortOrder");
       $option='';
       while ($rowM = $result->fetch(PDO::FETCH_ASSOC)){
-         $option = $option. "<option value = \"".$rowM[fieldID]."\">".$rowM[fieldID]."</option>";
+         $option = $option. "<option value = \"".$rowM['fieldID']."\">".$rowM['fieldID']."</option>";
       }
       $numBedOptions ="";
       $sqlnumBeds="SELECT numberOfBeds as numberOfBeds FROM field_GH where fieldID='".
@@ -140,11 +140,15 @@ echo "<input class='textbox mobile-input ' type='text' id='initials' name='initi
          $ind++;
       }
 
-      echo  '<tr><td><center><div class="styled-select" id="fieldDiv'.$numRows.'"> <select name ="field'.$numRows.'" class="wide" id="field'.$numRows.'" onChange="addInput('.$numRows.'); addAcre('.$numRows.'); calculateTotalUpdate(); calculateWater();"><option value="'.$row[fieldID].'">'.$row[fieldID].'</option>'.$option.'</select></div></center></td>';
+      echo  '<tr><td><center><div class="styled-select" id="fieldDiv'.$numRows.'"> <select name ="field'.$numRows.
+         '" class="wide" id="field'.$numRows.'" onChange="addInput('.$numRows.'); 
+      addAcre('.$numRows.'); 
+      calculateTotalUpdate(); 
+      calculateWater();"><option value="'.$row['fieldID'].'">'.$row['fieldID'].'</option>'.$option.'</select></div></center></td>';
 
-      echo "<td><center><div id=\"maxBed".$numRows."\" class='styled-select2'> <select id=\"maxBed2".$numRows."\" name=\"maxBed2".$numRows."\"  onChange=\"addAcre(".$numRows."); calculateTotalUpdate(); calculateWater(); \" class='wide'><option value=\"".$row[numOfBed]."\">".$row[numOfBed]."</option>".$numBedOptions."</select></div></center></td>";
+      echo "<td><center><div id=\"maxBed".$numRows."\" class='styled-select2'> <select id=\"maxBed2".$numRows."\" name=\"maxBed2".$numRows."\"  onChange=\"addAcre(".$numRows."); calculateTotalUpdate(); calculateWater(); \" class='wide'><option value=\"".$row['numOfBed']."\">".$row['numOfBed']."</option>".$numBedOptions."</select></div></center></td>";
 
-      echo "<td><center><div id=\"acreDiv".$numRows."\"><input class='wide' size = '4' type=\"text\" id=\"acre".$numRows."\" value=0 readonly></div> </center></td>";   
+      echo "<td><center><div id=\"acreDiv".$numRows." \"><input class='wide' size = '4' type=\"text\" id=\"acre".$numRows."\" value=0 readonly></div> </center></td>";   
       echo "<td><center><input type = 'text' name = 'crop".$numRows."' class = 'wide' size = '40'  value ='".$crops."'></center></td></tr>";
    }
    echo "<input type='hidden' value='".$numRows."' name='numRows' id='numRows'>";

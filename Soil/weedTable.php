@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
    $tcurDay = $_GET['tday'];
    $weed = escapehtml($_GET['weed']);
    $fieldID = escapehtml($_GET['fieldID']);
-   $sql="Select id, sDate,fieldID,weed,infestLevel,goneToSeed,comments,filename,hours from weedScout ".
+   $sql="Select id, sDate,fieldID,weed,infestLevel,goneToSeed,comments from weedScout ".
       "where sDate between '". 
       $year."-".$month."-".$day."' AND '".$tcurYear."-".$tcurMonth."-".
       $tcurDay."' and weed like '".$weed."' and fieldID like '".$fieldID.
@@ -54,10 +54,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
 
    echo "<table class='pure-table pure-table-bordered' >";
    echo "<thead><tr><th>Scout Date</th><th>Field</th><th>Species</th><th>Infestation</th><th>Seed</th>";
-   if ($_SESSION['labor']) {
-      echo "<th>Hours</th>";
-   }
-   echo "<th>Comment</th><th>Picture</th>";
+   echo "<th>Comment</th>";
    if ($_SESSION['admin']) {
       echo "<th>Edit</th><th>Delete</th>";
    }
@@ -74,24 +71,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
       echo "</td><td>";
       echo $row['goneToSeed'];
       echo "</td><td>";
-      if ($_SESSION['labor']) {
-         echo number_format((float) $row['hours'], 2, '.', '');
-         echo "</td><td>";
-      }
       echo $row['comments'];
-      echo "</td><td>";
-      $filename = $row['filename'];
-      if ($filename == "") {
-         echo "&nbsp;";
-      } else {
-         $width = "200";
-         $pos = strrpos($filename, ".");
-         $ext = substr($filename, $pos + 1);
-         if ($_SESSION['mobile']) {
-            $width = "80";
-         }
-         echo '<img style="width:'.$width.'px" src="'.$filename.'"/>';
-      }
       echo "</td>";
       if ($_SESSION['admin']) {
          echo "<td><form method='POST' action=\"weedEdit.php?month=".$month.

@@ -64,7 +64,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
       echo $row['incorp_tool'];
       echo "</td><td>";
       // query for coverSeed Table
-      $sql = "select * from coverSeed where id=".$row[id]. " order by crop";
+      $sql = "select * from coverSeed where id=".$row['id']. " order by crop";
       $sqlCoverSeed = $dbcon->query($sql);
       echo "<table class='pure-table pure-table-bordered'><thead><tr><th>Crop</th><th>Seeding Rate (lbs/acre)</th><th style='width: 30%;'>Pounds Seeded</th></tr></thead>";
       while ($rowS = $sqlCoverSeed->fetch(PDO::FETCH_ASSOC)){

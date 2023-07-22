@@ -25,7 +25,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
    $tcurDay = $_GET['tday'];
    $fieldID = escapehtml($_GET['fieldID']);
    $material = escapehtml($_GET['material']);
-   $sql = "select id, username, inputDate, fieldID, fertilizer, dripRows, unit, username, quantity, hours, ".
+   $sql = "select id, username, inputDate, fieldID, fertilizer, dripRows, unit, username, quantity, ".
       "comments ".
       "from liquid_fertilizer where inputDate between '".  $year."-".$month."-".$day."' AND '".$tcurYear.
       "-".$tcurMonth."-". $tcurDay."' and fieldID like '".$fieldID."' and fertilizer like '".$material.
@@ -48,9 +48,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
    
    echo "<thead><tr><th>Date</th><th>Field</th><th>Material</th><th>number of drip rows</th><th>unit<br>".
      "</th><th>Total Material Applied</th>";
-   if ($_SESSION['labor']) {
-      echo "<th>Hours</th>";
-   }
    echo "<th>Comments</th>";
    if ($_SESSION['admin']) {
       echo "<th>User</th><th>Edit</th><th>Delete</th>";
@@ -70,10 +67,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
       echo "</td><td>";
       echo number_format((float)$row['quantity'], 2, '.', '');
       // echo $row['quantity'];
-      if ($_SESSION['labor']) {
-         echo "</td><td>";
-         echo number_format((float)$row['hours'], 2, '.', '');
-      }
       echo "</td><td>";
       echo $row['comments'];
       echo "</td>";

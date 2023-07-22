@@ -35,7 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
    $crop = escapehtml($_GET['crop']);
    $fieldID = escapehtml($_GET['fieldID']);
    $pest = escapehtml($_GET['pest']);
-   $sql="select id,sDate,crops,fieldID,pest,avgCount,comments,filename,hours from pestScout ".
+   $sql="select id,sDate,crops,fieldID,pest,avgCount,comments from pestScout ".
       "where sDate between '".
       $year."-".$month."-".$day."' AND '".$tcurYear."-".$tcurMonth."-".
       $tcurDay."' and crops like '%".$crop."%' and fieldID like '".
@@ -81,24 +81,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/farmdata/Admin/Delete/warn.php';
         echo "</td><td>";
         echo $row['avgCount'];
         echo "</td><td>";
-        if ($_SESSION['labor']) {
-           echo number_format((float) $row['hours'], 2, '.', '');
-           echo "</td><td>";
-        }
         echo $row['comments'];
-        echo "</td><td>";
-        $filename = $row['filename'];
-        if ($filename == "") {
-           echo "&nbsp;";
-        } else {
-           $width = "200";
-           $pos = strrpos($filename, ".");
-           $ext = substr($filename, $pos + 1);
-           if ($_SESSION['mobile']) {
-              $width = "80";
-           }
-           echo '<img style="width:'.$width.'px" src="'.$filename.'"/>';
-        }
         echo "</td>";
         if ($_SESSION['admin']) {
            echo "<td><form method='POST' action=\"pestEdit.php?month=".$month.
