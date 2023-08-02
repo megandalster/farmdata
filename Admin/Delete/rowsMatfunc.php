@@ -5,12 +5,12 @@
       numRowsMat++;
       var table = document.getElementById("materialTable").getElementsByTagName('tbody')[0];
       var row = table.insertRow(-1);
-      var materialSprayed = "<?php
+      var materialSprayed = '<?php
          $sqlM="SELECT sprayMaterial FROM tSprayMaterials";
          $resultM=$dbcon->query($sqlM);
          while($rowM=$resultM->fetch(PDO::FETCH_ASSOC)){
-            echo "<option value='".$rowM[sprayMaterial]."'>".$rowM[sprayMaterial]."</option>";
-         }?>";
+            echo "<option value=\"".$rowM["sprayMaterial"]."\">".$rowM["sprayMaterial"]."</option>";
+         }?>';
 
       var cell0 = row.insertCell(0);
       cell0.innerHTML =  "<center><div id =\"material"+numRowsMat+"\" class='styled-select2'><select class='wide' id=\"material2"+numRowsMat+"\" name=\"material2"+numRowsMat+"\"  onChange=\"addInputRates("+numRowsMat+"); calculateSuggested("+numRowsMat+"); addUnit("+numRowsMat+");  \"\n>"+ "<option value=0> MaterialList</option>\n"+materialSprayed+"</select></div></center>";

@@ -7,9 +7,9 @@
       var row = table.insertRow(-1);
       var cell0 = row.insertCell(0);
       var fieldID = '<?php
-                        $result=$dbcon->query("Select fieldID from field_GH where active=1  order by sortOrder");
+                        $result=$dbcon->query("Select distinct fieldID from field_GH where active=1  order by sortOrder");
                         while ($row1 = $result->fetch(PDO::FETCH_ASSOC)){
-                           echo "<option value = \"".$row1[fieldID]."\">".$row1[fieldID]."</option>";
+                           echo "<option value = \"".$row1["fieldID"]."\">".$row1["fieldID"]."</option>";
                         }
                      ?>';
       cell0.innerHTML = '<center><div class="styled-select" id="fieldDiv'+numRows+'"> <select class="wide" name ="field' + numRows +'" id="field' + numRows + '" onChange="addInput('+numRows+'); addAcre('+numRows+'); calculateTotalUpdate(); calculateWater();">' +'<option value = 0 selected disabled> FieldID</option>' +   fieldID + '</select></div></center>';

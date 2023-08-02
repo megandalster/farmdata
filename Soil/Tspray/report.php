@@ -44,7 +44,7 @@ $sql="SELECT sprayDate, fieldID, (SELECT numOfBed/numberOfBeds FROM field_GH ".
        "(SELECT SUM(size) FROM field_GH, tSprayField as tf ".
        "WHERE field_GH.fieldID= tf.fieldID AND tf.id=tSprayMaster.id ) as frac, tSprayField.crops, user, ".
        "comment ".  "FROM tSprayMaster, tSprayWater, tSprayField, tSprayMaterials ".
-       "WHERE tSprayMaster.id= tSprayWater.id AND tSprayMaster.id=tSprayField.id AND material LIKE'".
+       "WHERE tSprayMaster.id= tSprayWater.id AND tSprayMaster.id=tSprayField.id AND material LIKE '".
        $materialCh."' AND tSprayField.fieldID LIKE '".$fieldCh."' AND tSprayField.crops like '%".$crop.
        "%' and tSprayMaster.sprayDate BETWEEN '".$fromDate."' AND '".$toDate.
        "' AND tSprayMaterials.sprayMaterial=tSprayWater.material and complete = 1";
@@ -114,7 +114,7 @@ while($rowM=$resultM->fetch(PDO::FETCH_ASSOC)){
       echo "</tbody></table></center></td><td>";
       echo "<center><table class='pure-table pure-table-bordered'><thead><tr><th>Material</th><th>Amount</th><th>Unit</th></tr></thead>";
       $sql = "select material, actualTotalAmount, TRateUnits from tSprayWater, tSprayMaterials where id = ".
-         $id." and tSprayWater.material = tSprayMaterials.sprayMaterial and material LIKE'".
+         $id." and tSprayWater.material = tSprayMaterials.sprayMaterial and material LIKE '".
         $materialCh."'";
       $mRes = $dbcon->query($sql);
       while ($mRow = $mRes->fetch(PDO::FETCH_ASSOC)) {

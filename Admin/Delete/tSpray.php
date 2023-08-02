@@ -140,15 +140,11 @@ echo "<input class='textbox mobile-input ' type='text' id='initials' name='initi
          $ind++;
       }
 
-      echo  '<tr><td><center><div class="styled-select" id="fieldDiv'.$numRows.'"> <select name ="field'.$numRows.
-         '" class="wide" id="field'.$numRows.'" onChange="addInput('.$numRows.'); 
-      addAcre('.$numRows.'); 
-      calculateTotalUpdate(); 
-      calculateWater();"><option value="'.$row['fieldID'].'">'.$row['fieldID'].'</option>'.$option.'</select></div></center></td>';
-
+      echo  '<tr><td><center><div class="styled-select" id="fieldDiv'.$numRows.'"> <select name ="field'.$numRows.'" class="wide" id="field'.$numRows.'" onChange="addInput('.$numRows.'); addAcre('.$numRows.'); calculateTotalUpdate(); calculateWater();"><option value="'.$row['fieldID'].'">'.$row['fieldID'].'</option>'.$option.'</select></div></center></td>';
+     
       echo "<td><center><div id=\"maxBed".$numRows."\" class='styled-select2'> <select id=\"maxBed2".$numRows."\" name=\"maxBed2".$numRows."\"  onChange=\"addAcre(".$numRows."); calculateTotalUpdate(); calculateWater(); \" class='wide'><option value=\"".$row['numOfBed']."\">".$row['numOfBed']."</option>".$numBedOptions."</select></div></center></td>";
-
-      echo "<td><center><div id=\"acreDiv".$numRows." \"><input class='wide' size = '4' type=\"text\" id=\"acre".$numRows."\" value=0 readonly></div> </center></td>";   
+   
+      echo "<td><center><div id=\"acreDiv".$numRows."\"><input class='wide' size = '4' type=\"text\" id=\"acre".$numRows."\" value=0 readonly></div> </center></td>";   
       echo "<td><center><input type = 'text' name = 'crop".$numRows."' class = 'wide' size = '40'  value ='".$crops."'></center></td></tr>";
    }
    echo "<input type='hidden' value='".$numRows."' name='numRows' id='numRows'>";
@@ -184,7 +180,7 @@ echo "<input class='textbox mobile-input ' type='text' id='initials' name='initi
       $sqlM="SELECT sprayMaterial FROM tSprayMaterials";
       $resultM=$dbcon->query($sqlM);
       while($rowM=$resultM->fetch(PDO::FETCH_ASSOC)){
-         $materialSprayed = $materialSprayed."<option value='".$rowM[sprayMaterial]."'>".$rowM[sprayMaterial]."</option>";
+         $materialSprayed = $materialSprayed."<option value='".$rowM['sprayMaterial']."'>".$rowM['sprayMaterial']."</option>";
       };
       
     $sql="SELECT TRateMin, TRateMax, TRateDefault,(TRateMax-TRateMin)/10 AS dif FROM tSprayMaterials  where sprayMaterial='".$row['material']."'";
@@ -207,10 +203,10 @@ echo "<input class='textbox mobile-input ' type='text' id='initials' name='initi
       echo  "<td><center><div id =\"rate".$numRowsMat.
             "\" class='wide'><select class='wide' id='rate2".$numRowsMat.
             "' name='rate2".$numRowsMat."'  onChange=\"calculateSuggested(".
-            $numRowsMat.");\"><option value=".$row[rate].">".$row[rate]."</option>".$rateOptions."</select></div></center></div></td>";
+            $numRowsMat.");\"><option value=".$row['rate'].">".$row['rate']."</option>".$rateOptions."</select></div></center></div></td>";
       echo  "<td><div id=\"unitDiv".$numRowsMat."\"><label style=\"font-size:12pt\" id='unit".$numRowsMat."'>Unit</label></div></td>";
       echo  "<td><center><div id=\"calculatedTotalDiv".$numRowsMat."\"><input type=\"text\" id=\"calculatedTotal".$numRowsMat."\" class='wide' value=0 readonly></div></center></td>";
-      echo  "<td><center><div id=\"actualTotalDiv".$numRowsMat."\"><input class='wide' type=\"text\" id=\"actuarialTotal".$numRowsMat."\" name=\"actuarialTotal".$numRowsMat."\" value=".$row[actualTotalAmount]."></div></center></td></tr>";
+      echo  "<td><center><div id=\"actualTotalDiv".$numRowsMat."\"><input class='wide' type=\"text\" id=\"actuarialTotal".$numRowsMat."\" name=\"actuarialTotal".$numRowsMat."\" value=".$row['actualTotalAmount']."></div></center></td></tr>";
    }
    echo "<input type='hidden' value='".$numRowsMat."' name='numRowsMat' id='numRowsMat'/>";
 ?>
@@ -265,7 +261,6 @@ while( $count <= $numRowsMat){
    echo "<script type='text/javascript'>calculateSuggested(".$count.");addUnit(".$count.");</script>";
    $count++;
 }
-
 echo "<script type='text/javascript'>calculateWater(); </script>";
 ?>
 <input type="submit" value = 'Submit' class='submitbutton pure-button wide' name="submit" onclick="return show_confirm();  ">
