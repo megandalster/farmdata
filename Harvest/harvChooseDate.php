@@ -1,4 +1,4 @@
-<php session_start(); ?>
+<?php session_start(); ?>
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/farmdata/authentication.php';
 include $_SERVER['DOCUMENT_ROOT'].'/farmdata/design.php';

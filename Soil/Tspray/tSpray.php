@@ -176,14 +176,14 @@ try {
    $stmt = $dbcon->prepare($sqlW);
    while($materialInd<= $_POST['numMaterial']){
       $material = escapehtml($_POST['material2'.$materialInd]);
-      $rate = escapehtml($_POST['rate2'.$materialInd]);
-      $total = escapehtml($_POST['actuarialTotal'.$materialInd]);
+      $rate = strval(escapehtml($_POST['rate2'.$materialInd]));
+      $total = strval(escapehtml($_POST['actuarialTotal'.$materialInd]));
    //   $sqlW="INSERT INTO tSprayWater VALUES(".$currentID." , '". $material."', ".
    //      $rate." , ".$total."  );";
       $stmt->bindParam(':id', $currentID, PDO::PARAM_INT);
       $stmt->bindParam(':mat', $material, PDO::PARAM_STR);
-      $stmt->bindParam(':rate', strval($rate), PDO::PARAM_STR);
-      $stmt->bindParam(':total', strval($total), PDO::PARAM_STR);
+      $stmt->bindParam(':rate', $rate, PDO::PARAM_STR);
+      $stmt->bindParam(':total', $total, PDO::PARAM_STR);
       $stmt->execute();
       $materialInd++;
    }

@@ -18,7 +18,6 @@ if ($ind = array_search('Loss', $targs)) {
   $targs = array_values($targs);
 }
 ?>
-
 <center>
 <h2>Create/Edit Harvest List</h2>
 </center>
@@ -64,7 +63,7 @@ for ($i = 0; $i < count($targs); $i++) {
 </thead>
 <tbody>
 <tr>
-	<td> 
+	<td><center></center>
 <div class="styled-select">
 <select name= "crop" id="crop" class="mobile-select" onChange="addInput();checkIfOnList();" >
 <!--
@@ -73,11 +72,11 @@ for ($i = 0; $i < count($targs); $i++) {
 <?php
 $result = $dbcon->query("SELECT  crop from plant");
 while ($row1 = $result->fetch(PDO::FETCH_ASSOC)){
- echo "\n<option value= \"".$row1[crop]."\">".$row1[crop]."</option>";}
+ echo "\n<option value= \"".$row1['crop']."\">".$row1['crop']."</option>";}
 ?>
 </select>
 </div>
-</td>
+</center></td>
 
 <td><center><input class="textbox4 mobile-input inside_table" type= "text" name="fieldID" id="fieldID" size="10"></center></td>
  
@@ -105,7 +104,7 @@ while ($row1 = $result->fetch(PDO::FETCH_ASSOC)){
              echo "\n";
           }
         ?>
-	document.getElementById('total').value = sum.toFixed(2);;
+	document.getElementById('total').value = sum.toFixed(2);
 	document.getElementById('default_unit').innerHTML = '&nbsp;&nbsp;' + default_unit[crop];
    }	
 	

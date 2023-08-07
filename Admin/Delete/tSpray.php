@@ -180,7 +180,7 @@ echo "<input class='textbox mobile-input ' type='text' id='initials' name='initi
       $sqlM="SELECT sprayMaterial FROM tSprayMaterials";
       $resultM=$dbcon->query($sqlM);
       while($rowM=$resultM->fetch(PDO::FETCH_ASSOC)){
-         $materialSprayed = $materialSprayed."<option value='".$rowM['sprayMaterial']."'>".$rowM['sprayMaterial']."</option>";
+         $materialSprayed = $materialSprayed."<option value=\"".$rowM['sprayMaterial']."\">".$rowM['sprayMaterial']."</option>";
       };
       
     $sql="SELECT TRateMin, TRateMax, TRateDefault,(TRateMax-TRateMin)/10 AS dif FROM tSprayMaterials  where sprayMaterial='".$row['material']."'";
